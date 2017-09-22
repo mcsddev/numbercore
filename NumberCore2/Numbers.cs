@@ -83,7 +83,7 @@ namespace NumberCore2
             Target = rnd.Next(101, 999);
         }
 
-        //public List<List<int>> Permutations => GetPermutations(Numbers);
+        public List<List<int>> Permutations => GetPermutations(Numbers);
 
         public List<Answer> PossibleAnswers
         {
@@ -109,77 +109,9 @@ namespace NumberCore2
                 return answers;
             }
         }
-        //{
-        //    get
-        //    {
-        //        var answers = Possible(Numbers, Numbers);
-
-        //        foreach (var perm in Permutations) { 
-
-        //            //answers.AddRange(Possible(perm, Operators));
-
-        //            //if (perm.Count == 1)
-        //            //{
-        //            //    answers.Add(new Answer
-        //            //    {
-        //            //        Value = perm.First(),
-        //            //        Equation = perm.First().ToString(),
-        //            //        Numbers = perm
-        //            //    });
-        //            //    continue;
-        //            //}
-
-        //            //var totalIterations = Math.Pow(Operations.Length, perm.Count - 1);
-
-        //            //for (int i = 0; i < totalIterations; i++)
-        //            //{
-        //            //    float ans = perm.First();
-        //            //    string eq = perm.First().ToString();
-        //            //    var ops = Encode2(i, Operations, perm.Count - 1);
-        //            //    for (int j = 0; j < perm.Count - 1; j++)
-        //            //    {
-        //            //        ans = DynamicMath(ans, perm[j + 1], ops[j]);
-        //            //        if (ans < 0 || ans % 1 != 0)
-        //            //        {
-        //            //            //Throw out decimals and negative at any step
-        //            //            continue;
-        //            //        }
-        //            //        eq += $" {ops[j]} {perm[j + 1]}";
-        //            //    }
-        //            //    if (!answers.Any(a => a.Equation.Equals(eq)))
-        //            //    {
-        //            //        answers.Add(new Answer
-        //            //        {
-        //            //            Value = (int)ans,
-        //            //            Numbers = perm,
-        //            //            Equation = eq
-        //            //        });
-        //            //    }
-        //            //}                 
-        //        }
-
-        //        return answers;
-        //    }
-        //}
 
         public List<Answer> ExactAnswers => PossibleAnswers.Where(a => a.Value == Target).ToList();
         
-        public static char[] Encode2(int value, char[] baseChars, int max)
-        {
-            int i = 0;
-            char[] buffer = Enumerable.Repeat(baseChars[0], max).ToArray();
-            int targetBase = baseChars.Length;
-
-            do
-            {
-                buffer[i] = baseChars[value % targetBase];
-                value = value / targetBase;
-                i++;
-            }
-            while (i < max);
-
-            return buffer;
-        }
         
         public static List<Answer> GetPossibleAnswers(Answer PreviousAnswer)
         {

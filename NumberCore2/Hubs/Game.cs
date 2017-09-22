@@ -8,7 +8,7 @@ using System;
 
 namespace NumberCore2.Hubs
 {
-    public class Chat : Hub
+    public class Game : Hub
     {
         public override async Task OnConnectedAsync()
         {

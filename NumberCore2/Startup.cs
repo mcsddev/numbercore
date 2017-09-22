@@ -63,7 +63,7 @@ namespace NumberCore2
 
             app.UseSignalR(routes =>
             {
-                routes.MapHub<Chat>("chat");
+                routes.MapHub<Game>("game");
             });
 
             app.UseMvc(routes =>

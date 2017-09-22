@@ -18,15 +18,6 @@ namespace UnitTests
 
             List<List<int>> expected = new List<List<int>>
             {
-                new List<int> { 1 },
-                new List<int> { 2 },
-                new List<int> { 1, 2 },
-                new List<int> { 2, 1 },
-                new List<int> { 3 },
-                new List<int> { 1, 3 },
-                new List<int> { 3, 1 },
-                new List<int> { 2, 3 },
-                new List<int> { 3, 2 },
                 new List<int> { 1, 2, 3 },
                 new List<int> { 2, 1, 3 },
                 new List<int> { 1, 3, 2 },
@@ -34,14 +25,12 @@ namespace UnitTests
                 new List<int> { 2, 3, 1 },
                 new List<int> { 3, 2, 1 },
             };
-            
-            for (int i = 0; i < puzzle.Permutations.Count; i++)
-            {
-                var test = puzzle.Permutations.ElementAt(i);
-                var expect = expected.ElementAt(i);
-                if (!test.SequenceEqual(expect))
+                        
+            foreach (var perm in puzzle.Permutations)
+            {                
+                if (!expected.Any(e => e.SequenceEqual(perm)))
                 {
-                    Assert.Fail($"Permutations for {{1, 2, 3}} do not match expected.\n{test}\n{expect}");
+                    Assert.Fail($"Permutations for {{1, 2, 3}} do not match expected.");
                 }
             }
         }
@@ -81,6 +70,18 @@ namespace UnitTests
         {
             var puzzle = new Puzzle(2);
             
+        }
+
+        [TestMethod]
+        public void TestKnownPuzzle()
+        {
+            var puzzle = new Puzzle
+            {
+                Numbers = new List<int> { 75, 50, 2, 3, 8, 7 },
+                Target = 812
+            };
+
+            var knownAnswer = puzzle.ExactAnswers;
         }
     }
 }

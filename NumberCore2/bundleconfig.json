@@ -18,6 +18,7 @@
       "wwwroot/lib/jquery/dist/jquery.js",
       "wwwroot/lib/popper.js/dist/umd/popper.js",
       "wwwroot/lib/bootstrap/dist/js/bootstrap.js",
+      "wwwroot/lib/handlebars/handlebars.js",
       "wwwroot/js/site.js"
     ],
     "minify": {

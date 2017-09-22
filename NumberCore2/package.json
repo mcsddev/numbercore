@@ -1,0 +1,18 @@
+{
+  "name": "number-core",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+  },
+  "dependencies": {
+    "@aspnet/signalr-client": "^1.0.0-alpha1-final"
+  }
+}

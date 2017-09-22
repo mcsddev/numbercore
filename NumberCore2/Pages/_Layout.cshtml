@@ -1,0 +1,52 @@
+﻿<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>@ViewData["Title"] - NumberCore2</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/css/bundle.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/css/bundle.min.css" asp-append-version="true" />
+    </environment>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <ul class="nav nav-pills float-right">
+                <li class="nav-item">
+                    <a asp-page="/Index">Home</a>
+                    <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a asp-page="/About">About</a>
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+            <p>&copy; 2017 - NumberCore2</p>
+        </div>
+    </footer>
+
+    <script src="~/js/signalr.js"></script>
+    <environment names="Development">
+        <script src="~/js/bundle.js"></script>
+    </environment>   
+    <environment names="Staging,Production">
+        <script src="~/js/bundle.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

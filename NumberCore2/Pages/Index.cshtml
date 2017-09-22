@@ -1,0 +1,213 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="numbers">
+    <h4 class="text-muted">Your numbers</h4>
+    <div class="card-group">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">25</h4>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">100</h4>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">3</h4>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">4</h4>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">15</h4>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">7</h4>
+            </div>
+        </div>
+    </div>
+    <h4>
+        <span class="text-sm-center text-muted">Your Target</span>
+        <span class="text-info target">342</span>
+    </h4>
+</div>
+
+
+
+<div id="connect-area" class="mt-md-5">
+    <h1>Number Core</h1>
+    <small class="form-text text-muted">
+        Enter name and connect to the game server.
+    </small>
+    <form id="joingame">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" id="name" class="form-control" placeholder="Name" />
+                    <span class="input-group-btn">
+                        <input type="submit" id="join" value="Join" class="join btn btn-outline-primary" />
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div id="game-area" style="display: none;">
+    <div class="row">
+        <div class="col-sm-9">
+            <h1>Game</h1>
+        </div>
+        <div class="col-sm-3">
+            <div class="card text-center">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Chat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Users</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body message-container">
+                    <ul class="list-group list-group-flush" id="messages"></ul>
+                </div>
+                <div class="card-footer bg-transparent border-success">
+                    <form id="sendmessage">
+                        <div class="input-group">
+                            <input type="text" id="message" name="message" class="form-control" />
+                            <span class="input-group-btn">
+                                <input type="submit" id="send" value="Send" class="send btn btn-success" disabled />
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <ul id="messages"></ul>
+    
+</div>
+
+@section scripts{
+
+    <script>
+
+        var isConnected = false;
+        let transportType = signalR.TransportType[getParameterByName('transport')] || signalR.TransportType.WebSockets;
+        let logger = new signalR.ConsoleLogger(signalR.LogLevel.Information);
+        let http = new signalR.HttpConnection(`http://${document.location.host}/chat`, { transport: transportType, logger: logger });
+        let connection = new signalR.HubConnection(http, logger);
+        
+        $("#sendmessage").on("submit", e => {
+            e.preventDefault();
+            if (isConnected) {
+                connection.invoke('Send', $("#message").val())
+                    .then(function () {
+                        $("#sendmessage")[0].reset();
+                    })
+                    .catch(err => appendLine(err, 'red'));
+            }
+            else {
+                appendLine("Connection is not active", 'red')
+            }
+        });
+        $("#message").on("keyup", e => {
+            $("#sendmessage :submit").attr("disabled", $(e.currentTarget).val().length < 1)
+        });
+        $("#joingame").on("submit", e => {
+            e.preventDefault();
+            let name = document.getElementById('name').value;
+            connection.start()
+                .then(function () {
+                    isConnected = true;
+                    appendLine('Connected successfully', 'green');
+                    $("#game-area").show();
+                    $("#connect-area").hide();
+                })
+                .catch(err => appendLine(err, 'red'));
+        });        
+
+        connection.onClosed = e => {
+            if (e) {
+                appendLine('Connection closed with error: ' + e, 'red');
+            }
+            else {
+                appendLine('Disconnected', 'green');
+            }
+        };
+
+        connection.on('SetUsersOnline', usersOnline => {
+            usersOnline.forEach(user => addUserOnline(user));
+        });
+
+        connection.on('UsersJoined', users => {
+            users.forEach(user => {
+                appendLine('User ' + user.Name + ' joined the chat');
+                addUserOnline(user);
+            });
+        });
+
+        connection.on('UsersLeft', users => {
+            users.forEach(user => {
+                appendLine('User ' + user.Name + ' left the chat');
+                document.getElementById(user.ConnectionId).outerHTML = '';
+            });
+        });
+
+        connection.on('Send', (userName, message) => {
+            let element = $("<li />")
+                .addClass("list-group-item text-right text-info")
+                .text(userName);
+            $("#messages").append(element);
+        });
+        
+        function appendLine(line, color) {
+            let element = $("<li />")
+                .addClass("list-group-item text-left")
+                .text(line);
+            if (color) {
+                element.addClass(color);
+            }
+            $("#messages").append(element);
+        };
+
+        function addUserOnline(user) {
+            if (document.getElementById(user.ConnectionId)) {
+                return;
+            }
+            var userLi = document.createElement('li');
+            userLi.innerText = `${user.Name} (${user.ConnectionId})`;
+            userLi.id = user.ConnectionId;
+            document.getElementById('users').appendChild(userLi);
+        }
+
+        function getParameterByName(name, url) {
+            if (!url) {
+                url = window.location.href;
+            }
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        };
+
+</script>
+}

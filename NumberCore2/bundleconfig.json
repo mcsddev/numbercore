@@ -30,8 +30,7 @@
   {
     "outputFileName": "wwwroot/js/signalr.js",
     "inputFiles": [
-      "wwwroot/lib/signalr-client/signalr-client-1.0.0-alpha1-final.js",
-      "wwwroot/lib/signalr-client/signalr-msgpackprotocol-1.0.0-alpha1-final.js"
+      "wwwroot/lib/signalr/dist/browser/signalr.js"
     ],
     "minify": {
       "enabled": false,

@@ -1,15 +1,157 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>f428a193-5114-4ffe-8509-b8cc98259417</UserSecretsId>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.0-alpha1-final" />
-    <PackageReference Include="BundlerMinifier.Core" Version="2.5.357" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.0" />
+    <PackageReference Include="BundlerMinifier.Core" Version="2.8.391" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\lib\signalr\dist\browser\signalr.js" />
+    <None Include="wwwroot\lib\signalr\dist\browser\signalr.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\browser\signalr.min.js" />
+    <None Include="wwwroot\lib\signalr\dist\browser\signalr.min.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\AbortController.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\AbortController.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\browser-index.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\browser-index.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\Errors.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\Errors.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\HandshakeProtocol.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\HandshakeProtocol.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\HttpClient.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\HttpClient.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\HttpConnection.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\HttpConnection.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\HubConnection.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\HubConnection.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\HubConnectionBuilder.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\HubConnectionBuilder.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\IConnection.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\IConnection.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\IHttpConnectionOptions.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\IHttpConnectionOptions.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\IHubProtocol.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\IHubProtocol.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\ILogger.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\ILogger.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\index.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\index.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\ITransport.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\ITransport.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\JsonHubProtocol.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\JsonHubProtocol.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\Loggers.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\Loggers.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\LongPollingTransport.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\LongPollingTransport.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\ServerSentEventsTransport.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\ServerSentEventsTransport.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\Stream.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\Stream.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\TextMessageFormat.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\TextMessageFormat.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\Utils.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\Utils.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\WebSocketTransport.js" />
+    <None Include="wwwroot\lib\signalr\dist\cjs\WebSocketTransport.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\AbortController.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\AbortController.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\browser-index.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\browser-index.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\Errors.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\Errors.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\HandshakeProtocol.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\HandshakeProtocol.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\HttpClient.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\HttpClient.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\HttpConnection.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\HttpConnection.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\HubConnection.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\HubConnection.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\HubConnectionBuilder.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\HubConnectionBuilder.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\IConnection.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\IConnection.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\IHttpConnectionOptions.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\IHttpConnectionOptions.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\IHubProtocol.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\IHubProtocol.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\ILogger.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\ILogger.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\index.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\index.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\ITransport.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\ITransport.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\JsonHubProtocol.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\JsonHubProtocol.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\Loggers.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\Loggers.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\LongPollingTransport.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\LongPollingTransport.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\ServerSentEventsTransport.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\ServerSentEventsTransport.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\Stream.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\Stream.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\TextMessageFormat.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\TextMessageFormat.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\Utils.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\Utils.js.map" />
+    <None Include="wwwroot\lib\signalr\dist\esm\WebSocketTransport.js" />
+    <None Include="wwwroot\lib\signalr\dist\esm\WebSocketTransport.js.map" />
+    <None Include="wwwroot\lib\signalr\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\AbortController.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\browser-index.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\Errors.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\HandshakeProtocol.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\HttpClient.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\HttpConnection.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\HubConnection.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\HubConnectionBuilder.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\IConnection.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\IHttpConnectionOptions.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\IHubProtocol.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\ILogger.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\index.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\ITransport.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\JsonHubProtocol.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\Loggers.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\LongPollingTransport.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\ServerSentEventsTransport.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\Stream.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\TextMessageFormat.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\Utils.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\dist\esm\WebSocketTransport.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\AbortController.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\browser-index.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\Errors.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\HandshakeProtocol.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\HttpClient.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\HttpConnection.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\HubConnection.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\HubConnectionBuilder.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\IConnection.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\IHttpConnectionOptions.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\IHubProtocol.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\ILogger.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\index.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\ITransport.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\JsonHubProtocol.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\Loggers.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\LongPollingTransport.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\ServerSentEventsTransport.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\Stream.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\TextMessageFormat.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\Utils.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\signalr\src\WebSocketTransport.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Update="wwwroot/lib" CopyToPublishDirectory="Never" />
@@ -25,5 +167,21 @@
   <Target Name="BowerInstall" BeforeTargets="PrepareForPublish">
     <Exec Command="bower install" />
   </Target>
+  
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ESNext</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
   
 </Project>
